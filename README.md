@@ -1,73 +1,88 @@
-# Windows Update Disabler
+```
+# Отключить обновления Windows
 
-![](https://i.imgur.com/pGsWaOt.png 'Something went wrong')
+![](https://i.imgur.com/pGsWaOt.png 'Что-то пошло не так')
 
-⚡ The one-click way to disable auto updates for good, without leaving leftover stuff running in the background.
+⚡ Отключение автоматических обновлений в один клик, без фоновых процессов.
 
-> [!WARNING]  
-> Before running this script, ensure that Windows is fully updated and not currently installing or downloading updates! Interrupting an update could result in breaking your Windows installation!
+> [!WARNING]
+> Перед запуском этого скрипта убедитесь, что Windows полностью обновлена и в данный момент не устанавливает или не загружает обновления! Прерывание обновления может привести к поломке вашей установки Windows!
 
-## How to Use
+---
 
-### Simple!
+## Как использовать
 
-1. **Clone or Download:**
+### Просто!
 
-    - Clone this repository using `git clone https://github.com/tsgrgo/windows-update-disabler.git` or download it as a ZIP file and extract it.
+1.  **Клонируйте или скачайте:**
 
-2. **Check for Active Updates:**
+    * Клонируйте этот репозиторий с помощью `git clone https://github.com/tsgrgo/windows-update-disabler.git` или скачайте его как ZIP-файл и распакуйте.
 
-    - Ensure there are no updates currently being installed. Navigate to **Settings > Update & Security > Windows Update** and verify.
+2.  **Проверьте наличие активных обновлений:**
 
-3. **Run the Script:**
+    * Убедитесь, что в данный момент не устанавливаются обновления. Перейдите в **Настройки > Обновление и безопасность > Центр обновления Windows** и проверьте.
 
-    - Execute `disable updates.bat`. This will disable automatic Windows updates.
+3.  **Запустите скрипт:**
 
-4. **Re-enable Updates (Optional):**
-    - If you need to allow automatic updates again, run `enable updates.bat`. This is a complete inverse function of `disable updates.bat` and will undo all the changes it did.
+    * Запустите `disable updates.bat`. Это отключит автоматические обновления Windows.
 
-## How to Update Manually
+4.  **Повторное включение обновлений (необязательно):**
 
-Regular updates are recommended for security. To update manually:
+    * Если вам нужно снова разрешить автоматические обновления, запустите `enable updates.bat`. Это полностью обратная функция `disable updates.bat` и отменит все внесенные изменения.
 
-1. **Enable Updates:**
+---
 
-    - Run `enable updates.bat` to re-enable Windows Update.
+## Как обновлять вручную
 
-2. **Perform Updates:**
+Регулярные обновления рекомендуются для безопасности. Для обновления вручную:
 
-    - Navigate to **Settings > Update & Security > Windows Update** and install available updates.
+1.  **Включите обновления:**
 
-3. **Disable Updates Again:**
-    - After updating, run `disable updates.bat` again to disable automatic updates.
+    * Запустите `enable updates.bat`, чтобы повторно включить Центр обновления Windows.
 
-## Using the Update Service Temporarily
+2.  **Выполните обновления:**
 
-Some applications, like Microsoft Store, depend on the Windows Update service. To temporarily enable the service:
+    * Перейдите в **Настройки > Обновление и безопасность > Центр обновления Windows** и установите доступные обновления.
 
-1. **Enable Update Service:**
+3.  **Снова отключите обновления:**
 
-    - Run `use update service.bat` to re-enable the Windows Update Service.
+    * После обновления снова запустите `disable updates.bat`, чтобы отключить автоматические обновления.
 
-2. **Use Dependent Applications:**
+---
 
-    - You can now use applications that require the update service.
+## Использование службы обновлений временно
 
-3. **Disable Update Service Again:**
-    - Once done, run `disable updates.bat` to disable the update service again.
+Некоторые приложения, такие как Microsoft Store, зависят от службы Центра обновления Windows. Чтобы временно включить службу:
 
-## What It Does
+1.  **Включите службу обновлений:**
 
-The script performs the following actions to disable automatic updates:
+    * Запустите `use update service.bat`, чтобы повторно включить службу Центра обновления Windows.
 
--   Disables the **Windows Update Service (wuauserv)**.
--   Disables the **Update Orchestrator Service (UsoSvc)**.
--   Disables the **Windows Update Medic Service (WaaSMedicSvc)**.
--   Disables all update-related scheduled tasks.
--   Applies registry changes to prevent auto-updates.
+2.  **Используйте зависимые приложения:**
 
-## Why is PsExec Needed?
+    * Теперь вы можете использовать приложения, которым требуется служба обновлений.
 
-Some of the services and tasks involved are protected from user accounts, and they require elevated system privileges to be modified. PsExec allows the script to run commands with the necessary permissions to bypass these restrictions.
+3.  **Снова отключите службу обновлений:**
 
-PsExec is part of the official Sysinternals suite from Microsoft. More info: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec
+    * После завершения работы снова запустите `disable updates.bat`, чтобы отключить службу обновлений.
+
+---
+
+## Что делает скрипт
+
+Скрипт выполняет следующие действия для отключения автоматических обновлений:
+
+* Отключает **службу Центра обновления Windows (wuauserv)**.
+* Отключает **службу оркестрации обновлений (UsoSvc)**.
+* Отключает **службу восстановления Центра обновления Windows (WaaSMedicSvc)**.
+* Отключает все запланированные задачи, связанные с обновлениями.
+* Применяет изменения в реестре для предотвращения автоматических обновлений.
+
+---
+
+## Зачем нужен PsExec?
+
+Некоторые из задействованных служб и задач защищены от учетных записей пользователей и требуют повышенных системных привилегий для изменения. PsExec позволяет скрипту выполнять команды с необходимыми разрешениями для обхода этих ограничений.
+
+PsExec является частью официального пакета Sysinternals от Microsoft. Дополнительная информация: https://docs.microsoft.com/en-us/sysinternals/downloads/psexec
+```
